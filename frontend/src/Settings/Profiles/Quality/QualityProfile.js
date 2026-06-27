@@ -76,6 +76,7 @@ class QualityProfile extends Component {
       <Card
         className={styles.qualityProfile}
         overlayContent={true}
+        ariaLabel={`${translate('EditQualityProfile')}: ${name}`}
         onPress={this.onEditQualityProfilePress}
       >
         <div className={styles.nameContainer}>

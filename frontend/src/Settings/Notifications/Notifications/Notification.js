@@ -96,6 +96,9 @@ class Notification extends Component {
       <Card
         className={styles.notification}
         overlayContent={true}
+        ariaLabel={translate('EditConnectionImplementation', {
+          implementationName: name
+        })}
         onPress={this.onEditNotificationPress}
       >
         <div className={styles.nameContainer}>

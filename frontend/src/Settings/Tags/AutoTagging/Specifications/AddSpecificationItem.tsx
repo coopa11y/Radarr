@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import ActionCard from 'Components/Link/ActionCard';
+import Card from 'Components/Card';
 import Button from 'Components/Link/Button';
 import Menu from 'Components/Menu/Menu';
 import MenuContent from 'Components/Menu/MenuContent';
@@ -33,54 +33,54 @@ export default function AddSpecificationItem({
   }, [implementation, onSpecificationSelect]);
 
   const hasPresets = !!presets && !!presets.length;
-  const addLabel = translate('AddConditionImplementation', {
-    implementationName,
-  });
 
   return (
-    <ActionCard
+    <Card
       className={styles.specification}
-      underlayClassName={styles.underlay}
       overlayClassName={styles.overlay}
-      nameClassName={styles.name}
-      actionsClassName={styles.actions}
-      label={addLabel}
+      overlayContent={true}
+      ariaLabel={translate('AddConditionImplementation', {
+        implementationName,
+      })}
       title={implementationName}
-      name={implementationName}
       onPress={handleSpecificationSelect}
     >
-      {hasPresets ? (
-        <span>
-          <Button size={sizes.SMALL} onPress={handleSpecificationSelect}>
-            {translate('Custom')}
-          </Button>
+      <div className={styles.name}>{implementationName}</div>
 
-          <Menu className={styles.presetsMenu}>
-            <Button className={styles.presetsMenuButton} size={sizes.SMALL}>
-              {translate('Presets')}
+      <div className={styles.actions}>
+        {hasPresets ? (
+          <span>
+            <Button size={sizes.SMALL} onPress={handleSpecificationSelect}>
+              {translate('Custom')}
             </Button>
 
-            <MenuContent>
-              {presets.map((preset, index) => {
-                return (
-                  <AddSpecificationPresetMenuItem
-                    key={index}
-                    name={preset.name}
-                    implementation={implementation}
-                    onPress={handleSpecificationSelect}
-                  />
-                );
-              })}
-            </MenuContent>
-          </Menu>
-        </span>
-      ) : null}
+            <Menu className={styles.presetsMenu}>
+              <Button className={styles.presetsMenuButton} size={sizes.SMALL}>
+                {translate('Presets')}
+              </Button>
 
-      {infoLink ? (
-        <Button to={infoLink} size={sizes.SMALL}>
-          {translate('MoreInfo')}
-        </Button>
-      ) : null}
-    </ActionCard>
+              <MenuContent>
+                {presets.map((preset, index) => {
+                  return (
+                    <AddSpecificationPresetMenuItem
+                      key={index}
+                      name={preset.name}
+                      implementation={implementation}
+                      onPress={handleSpecificationSelect}
+                    />
+                  );
+                })}
+              </MenuContent>
+            </Menu>
+          </span>
+        ) : null}
+
+        {infoLink ? (
+          <Button to={infoLink} size={sizes.SMALL}>
+            {translate('MoreInfo')}
+          </Button>
+        ) : null}
+      </div>
+    </Card>
   );
 }

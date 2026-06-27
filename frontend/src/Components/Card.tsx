@@ -2,7 +2,7 @@ import React from 'react';
 import Link, { LinkProps } from 'Components/Link/Link';
 import styles from './Card.css';
 
-interface CardProps extends Pick<LinkProps, 'onPress'> {
+interface CardProps extends Pick<LinkProps, 'onPress' | 'title'> {
   // TODO: Consider using different properties for classname depending if it's overlaying content or not
   ariaLabel?: string;
   className?: string;

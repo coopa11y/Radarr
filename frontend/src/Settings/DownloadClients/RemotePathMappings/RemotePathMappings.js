@@ -88,6 +88,8 @@ class RemotePathMappings extends Component {
           <div className={styles.addRemotePathMapping}>
             <Link
               className={styles.addButton}
+              actionLabel={translate('AddRemotePathMapping')}
+              title={translate('AddRemotePathMapping')}
               onPress={this.onAddRemotePathMappingPress}
             >
               <Icon name={icons.ADD} />

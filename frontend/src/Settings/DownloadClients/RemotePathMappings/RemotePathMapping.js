@@ -72,6 +72,9 @@ class RemotePathMapping extends Component {
 
         <div className={styles.actions}>
           <Link
+            actionLabel={translate('EditRemotePathMapping')}
+            context={`${host}: ${remotePath}`}
+            title={translate('EditRemotePathMapping')}
             onPress={this.onEditRemotePathMappingPress}
           >
             <Icon name={icons.EDIT} />
